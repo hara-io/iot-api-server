@@ -5,7 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var tesselV1 = require('./controllers/v1/tessel');
+var ambient = require('./controllers/ambient');
 var app = express();
 
 // view engine setup
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// setup morgan logger only in development
+// setup morgan for console logger
 app.use(logger('dev'));
 
 // use the passport package in our application
@@ -29,7 +29,7 @@ var port = process.env.PORT || 3000;
 
 // REGISTER OUR ROUTES
 // =============================================================================
-app.use('/v1/tessel', tesselV1);
+app.use('/tessel', ambient);
 
 // START THE SERVER
 // =============================================================================
@@ -38,7 +38,6 @@ console.log('Magic happens on port ' + port);
 
 // ERROR HANDLERS
 // =============================================================================
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
