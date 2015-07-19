@@ -29,7 +29,7 @@ var port = process.env.PORT || 3000;
 
 // REGISTER OUR ROUTES
 // =============================================================================
-app.use('/tessel', ambient);
+app.use('/tessel/ambient', ambient);
 
 // START THE SERVER
 // =============================================================================
