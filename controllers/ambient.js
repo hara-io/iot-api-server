@@ -13,9 +13,9 @@ router.use(function(req, res, next) {
     next();
 });
 
-// POST http://localhost:3000/tessel/ambient/invoke
+// POST http://localhost:3000/tessel/ambient/save
 // Authorization: Basic dGVzc2VsOnRlc3NlbDEyMw==
-router.route('/invoke')
+router.route('/save')
     .post(authMiddleware.isAuthenticated, function(req, res, next) {
         // get type and value from request body
         var ambientType = validator.trim(req.body.type);
@@ -24,7 +24,8 @@ router.route('/invoke')
 
         // if type OR value are not valid return error
         if (!inputHelper.validateAll(ambientType, ambientValue, ambientDate)) {
-            rea.json('error');
+            res.json('error');
+            return;
         }
 
         // create the ambient model and save it into db
@@ -53,12 +54,14 @@ router.route('/all/:type?')
         // if filter is not valid return error
         if (!inputHelper.validateType(filterType, true)) {
             res.json('error');
+            return;
         }
 
         // define where clause
         var whereClause = {};
+        whereClause['order'] = 'id DESC';
         if (filterType != '') {
-            whereClause = { where: { type: filterType } };
+            whereClause['where'] = { type: filterType };
         }
 
         // retrieves all records of type X from db
@@ -82,15 +85,17 @@ router.route('/last/:type?')
         // if filter is not valid return error
         if (!inputHelper.validateType(filterType, true)) {
             res.json('error');
+            return;
         }
 
         // define where clause
         var whereClause = {};
+        whereClause['order'] = 'id DESC';;
         if (filterType != '') {
-            whereClause = { where: { type: filterType } };
+            whereClause['where'] = { type: filterType };
         }
 
-        // retrieves all records of type X from db
+        // retrieves the last record of type X from db
         Ambient.findOne(
             whereClause
         ).then(function(last) {
