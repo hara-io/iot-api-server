@@ -2,12 +2,12 @@
 
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
-var models  = require('../models');
+var User  = require('../models').User;
 
 passport.use(new BasicStrategy(
     function(username, password, callback) {
         // get user from db
-        models.User.findOne({
+        User.findOne({
             where: {
                 username: username,
                 password: password
