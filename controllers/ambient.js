@@ -18,18 +18,20 @@ router.use(function(req, res, next) {
 router.route('/save')
     .post(authMiddleware.isAuthenticated, function(req, res, next) {
         // get type and value from request body
+        var ambientDevice = validator.trim(req.body.device);
         var ambientType = validator.trim(req.body.type);
         var ambientValue = validator.trim(req.body.value);
         var ambientDate = validator.trim(req.body.date);
 
         // if type OR value are not valid return error
-        if (!inputHelper.validateAll(ambientType, ambientValue, ambientDate)) {
+        if (!inputHelper.validateAll(ambientDevice, ambientType, ambientValue, ambientDate)) {
             res.json('error');
             return;
         }
 
         // create the ambient model and save it into db
         Ambient.build({
+            device: ambientDevice,
             type: ambientType.toUpperCase(),
             value: ambientValue,
             createdAt: ambientDate
@@ -46,8 +48,8 @@ router.route('/save')
         });
     });
 
-// GET http://localhost:3000/tessel/ambient/all/:type?
-router.route('/all/:type?')
+// GET http://localhost:3000/tessel/ambient/list/:type?
+router.route('/list/:type?')
     .get(function(req, res, next) {
         var filterType = validator.trim(req.params.type);
 

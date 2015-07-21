@@ -4,8 +4,9 @@ var validator = require('validator');
 var constant = require('../config/constants').ambient;
 
 module.exports = {
-    validateAll: function(type, value, date) {
-        if (validator.isFloat(value) &&
+    validateAll: function(device, type, value, date) {
+        if (device != '' &&
+            validator.isFloat(value) &&
             validator.isAlpha(type) &&
             validator.isLength(type, 1, 1) &&
             (type === constant.sound || type === constant.light) &&

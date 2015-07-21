@@ -2,6 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Ambient = sequelize.define('Ambient', {
+        device: DataTypes.STRING,
         type: DataTypes.CHAR,
         value: DataTypes.FLOAT,
         createdAt: DataTypes.DATE

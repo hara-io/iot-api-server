@@ -8,13 +8,17 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+            device: {
+                allowNull: false,
+                type: Sequelize.STRING(20)
+            },
             type: {
                 allowNull: false,
                 type: Sequelize.CHAR(1)
             },
             value: {
                 allowNull: false,
-                type: Sequelize.FLOAT(2, 8)
+                type: Sequelize.NUMERIC(9, 8)
             },
             createdAt: {
                 allowNull: false,
