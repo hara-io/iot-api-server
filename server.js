@@ -5,6 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var errorHandler = require('./middlewares/errorHandler');
 var ambient = require('./controllers/ambient');
 var app = express();
 
@@ -36,7 +37,7 @@ app.use('/tessel/ambient', ambient);
 app.listen(port);
 console.log('Magic happens on port ' + port);
 
-// ERROR HANDLERS
+// MIDDLEWARES ERROR HANDLERS
 // =============================================================================
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,26 +45,4 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
-// development/test error handler
-// will print stacktrace
-if (app.get('env') === 'development' || app.get('env') === 'test') {
-    app.use(
-        function(err, req, res, next) {
-            res.status(err.status || 500);
-            res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+app.use(errorHandler);

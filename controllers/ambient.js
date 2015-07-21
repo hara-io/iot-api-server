@@ -23,9 +23,13 @@ router.route('/save')
         var ambientValue = validator.trim(req.body.value);
         var ambientDate = validator.trim(req.body.date);
 
-        // if type OR value are not valid return error
-        if (!inputHelper.validateAll(ambientDevice, ambientType, ambientValue, ambientDate)) {
-            res.json('error');
+        // check input params
+        if (!inputHelper.validateDevice(ambientDevice, false) ||
+            !inputHelper.validateType(ambientType, false) ||
+            !inputHelper.validateValue(ambientValue, false) ||
+            !inputHelper.validateDate(ambientDate, false)) {
+            var err = new Error('Missing or wrong parameters');
+            next(err);
             return;
         }
 
@@ -41,10 +45,7 @@ router.route('/save')
             res.json(record);
         })
         .catch(function(err) {
-            res.render('error', {
-                message: err.name,
-                error: err
-            });
+            next(err);
         });
     });
 
@@ -55,7 +56,8 @@ router.route('/list/:type?')
 
         // if filter is not valid return error
         if (!inputHelper.validateType(filterType, true)) {
-            res.json('error');
+            var err = new Error('Unknown value for param type');
+            next(err);
             return;
         }
 
@@ -72,10 +74,7 @@ router.route('/list/:type?')
         ).then(function(records) {
             res.json(records);
         }).catch(function(err) {
-            res.render('error', {
-                message: err.name,
-                error: err
-            });
+            next(err);
         });
     });
 
@@ -86,7 +85,8 @@ router.route('/last/:type?')
 
         // if filter is not valid return error
         if (!inputHelper.validateType(filterType, true)) {
-            res.json('error');
+            var err = new Error('Unknown value for param type');
+            next(err);
             return;
         }
 
@@ -103,10 +103,7 @@ router.route('/last/:type?')
         ).then(function(last) {
             res.json(last);
         }).catch(function(err) {
-            res.render('error', {
-                message: err.name,
-                error: err
-            });
+            next(err);
         });
     });
 
