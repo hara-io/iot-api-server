@@ -2,10 +2,13 @@
   "name": "iot-api-server",
   "version": "1.0.0",
   "description": "RESTful API server for IOT",
-  "repository": "https://github.com/hara-io/iot-api-server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hara-io/iot-api-server.git"
   },
   "keywords": [
     "api",
@@ -15,6 +18,10 @@
   ],
   "author": "HARA",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hara-io/iot-api-server/issues"
+  },
+  "homepage": "https://github.com/hara-io/iot-api-server",
   "dependencies": {
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
