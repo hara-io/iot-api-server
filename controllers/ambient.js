@@ -49,23 +49,26 @@ router.route('/save')
         });
     });
 
-// GET http://localhost:3000/tessel/ambient/list/:type?
-router.route('/list/:type?')
+// GET http://localhost:3000/tessel/ambient/list/:device/:type?
+router.route('/list/:device/:type?')
     .get(function(req, res, next) {
+        var filterDevice = validator.trim(req.params.device);
         var filterType = validator.trim(req.params.type);
 
         // if filter is not valid return error
-        if (!inputHelper.validateType(filterType, true)) {
-            var err = new Error('Unknown value for param type');
+        if (!inputHelper.validateDevice(filterDevice, false) ||
+            !inputHelper.validateType(filterType, true)) {
+            var err = new Error('Missing or wrong parameters');
             next(err);
             return;
         }
 
         // define where clause
-        var whereClause = {};
+        var whereClause = { order: null, where: {} };
         whereClause['order'] = 'id DESC';
+        whereClause['where']['device'] = filterDevice;
         if (filterType != '') {
-            whereClause['where'] = { type: filterType };
+            whereClause['where']['type'] = filterType;
         }
 
         // retrieves all records of type X from db
@@ -78,9 +81,10 @@ router.route('/list/:type?')
         });
     });
 
-// GET http://localhost:3000/tessel/ambient/last/:type?
-router.route('/last/:type?')
+// GET http://localhost:3000/tessel/ambient/last/:device/:type?
+router.route('/last/:device/:type?')
     .get(function(req, res, next) {
+        var filterDevice = validator.trim(req.params.device);
         var filterType = validator.trim(req.params.type);
 
         // if filter is not valid return error
@@ -90,11 +94,11 @@ router.route('/last/:type?')
             return;
         }
 
-        // define where clause
-        var whereClause = {};
-        whereClause['order'] = 'id DESC';;
+        var whereClause = { order: null, where: {} };
+        whereClause['order'] = 'id DESC';
+        whereClause['where']['device'] = filterDevice;
         if (filterType != '') {
-            whereClause['where'] = { type: filterType };
+            whereClause['where']['type'] = filterType;
         }
 
         // retrieves the last record of type X from db
