@@ -34,13 +34,12 @@ router.route('/save')
         }
 
         // create the ambient model and save it into db
-        Ambient.build({
+        Ambient.create({
             device: ambientDevice,
             type: ambientType.toUpperCase(),
             value: ambientValue,
             createdAt: ambientDate
         })
-        .save()
         .then(function(record) {
             res.json(record);
         })
