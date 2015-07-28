@@ -1,5 +1,3 @@
-'use strict';
-
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -7,6 +5,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var errorHandler = require('./middlewares/errorHandler');
 var ambient = require('./controllers/ambient');
+var device = require('./controllers/device');
 var app = express();
 
 // view engine setup
@@ -31,6 +30,7 @@ var port = process.env.PORT || 3000;
 // REGISTER OUR ROUTES
 // =============================================================================
 app.use('/tessel/ambient', ambient);
+app.use('/tessel/device', device);
 
 // START THE SERVER
 // =============================================================================

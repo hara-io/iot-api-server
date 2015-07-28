@@ -1,15 +1,37 @@
-'use strict';
+var constant = require('../config/constants').ambient;
 
 module.exports = function(sequelize, DataTypes) {
     var Ambient = sequelize.define('Ambient', {
-        device: DataTypes.STRING,
-        type: DataTypes.CHAR,
-        value: DataTypes.FLOAT,
-        createdAt: DataTypes.DATE
+      id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: DataTypes.INTEGER
+      },
+      deviceId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: 'Devices', // <<< Note, its table's name, not object name
+        referencesKey: 'id' // <<< Note, its a column name
+      },
+      type: {
+          allowNull: false,
+          type: DataTypes.ENUM,
+          values: [constant.sound, constant.light]
+      },
+      value: {
+          allowNull: false,
+          type: DataTypes.NUMERIC(9, 8)
+      },
+      createdAt: {
+          allowNull: false,
+          type: DataTypes.DATE
+      }
     }, {
         classMethods: {
             associate: function(models) {
                 //associations can be defined here
+                //Ambient.belongsTo(models.Device, { foreignKey: 'deviceId'});
             }
         }
     });

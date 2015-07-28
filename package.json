@@ -4,7 +4,10 @@
   "description": "RESTful API server for IOT",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate": "sequelize db:migrate",
+    "populate": "node seeds/populate.js",
+    "drop": "node seeds/drop.js",
+    "init": "npm run drop && npm run migrate && npm run populate"
   },
   "repository": {
     "type": "git",

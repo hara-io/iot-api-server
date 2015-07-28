@@ -1,5 +1,3 @@
-'use strict';
-
 var express = require('express');
 var passport = require('passport');
 var validator = require('validator');
@@ -35,7 +33,7 @@ router.route('/save')
 
         // create the ambient model and save it into db
         Ambient.create({
-            device: ambientDevice,
+            deviceId: ambientDevice,
             type: ambientType.toUpperCase(),
             value: ambientValue,
             createdAt: ambientDate
@@ -65,7 +63,7 @@ router.route('/list/:device/:type?')
         // define where clause
         var whereClause = { order: null, where: {} };
         whereClause['order'] = 'id DESC';
-        whereClause['where']['device'] = filterDevice;
+        whereClause['where']['deviceId'] = filterDevice;
         if (filterType != '') {
             whereClause['where']['type'] = filterType;
         }
