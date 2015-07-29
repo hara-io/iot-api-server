@@ -9,9 +9,6 @@ module.exports = function(sequelize, DataTypes) {
       name: {
         type: DataTypes.STRING(15)
       },
-      authApi: {
-        type: DataTypes.STRING(20)
-      },
       configAmbientSoundId: {
         allowNull: true,
         type: DataTypes.INTEGER,

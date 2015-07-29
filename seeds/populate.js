@@ -71,7 +71,6 @@ function createDevice(configAmbientSoundId, configAmbientLightId){
     // create the device model and save it into db
     Device.create({
         name: 'tesselHara',
-        authApi: '',
         configAmbientSoundId: configAmbientSoundId,
         configAmbientLightId: configAmbientLightId
     })

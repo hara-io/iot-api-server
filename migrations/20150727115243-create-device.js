@@ -10,9 +10,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING(15)
       },
-      authApi: {
-        type: Sequelize.STRING(20)
-      },
       configAmbientSoundId: {
         allowNull: true,
         type: Sequelize.INTEGER,
