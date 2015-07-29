@@ -16,14 +16,14 @@ module.exports = {
       configAmbientSoundId: {
         allowNull: true,
         type: Sequelize.INTEGER,
-        references: 'ConfigAmbientSounds', // <<< Note, its table's name, not object name
-        referencesKey: 'id' // <<< Note, its a column name
+        model: 'ConfigAmbientSounds',
+        key: 'id'
       },
       configAmbientLightId: {
         allowNull: true,
         type: Sequelize.INTEGER,
-        references: 'ConfigAmbientLights', // <<< Note, its table's name, not object name
-        referencesKey: 'id' // <<< Note, its a column name
+        model: 'ConfigAmbientLight',
+        key: 'id'
       },
       createdAt: {
           allowNull: false,

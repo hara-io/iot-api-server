@@ -15,14 +15,14 @@ module.exports = function(sequelize, DataTypes) {
       configAmbientSoundId: {
         allowNull: true,
         type: DataTypes.INTEGER,
-        references: 'ConfigAmbientSounds', // <<< Note, its table's name, not object name
-        referencesKey: 'id' // <<< Note, its a column name
+        model: 'ConfigAmbientSound',
+        key: 'id'
       },
       configAmbientLightId: {
         allowNull: true,
         type: DataTypes.INTEGER,
-        references: 'ConfigAmbientLights', // <<< Note, its table's name, not object name
-        referencesKey: 'id' // <<< Note, its a column name
+        model: 'ConfigAmbientLight',
+        key: 'id'
       }
     }, {
         classMethods: {

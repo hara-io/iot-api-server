@@ -11,8 +11,8 @@ module.exports = function(sequelize, DataTypes) {
       deviceId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: 'Devices', // <<< Note, its table's name, not object name
-        referencesKey: 'id' // <<< Note, its a column name
+        model: 'Device',
+        key: 'id'
       },
       type: {
           allowNull: false,
