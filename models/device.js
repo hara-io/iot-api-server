@@ -2,11 +2,15 @@ module.exports = function(sequelize, DataTypes) {
     var Device = sequelize.define('Device', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING(26)
+      },
+      model: {
+        allowNull: false,
+        type: DataTypes.STRING(8)
       },
       name: {
+        unique: true,
         type: DataTypes.STRING(15)
       },
       configAmbientSoundId: {
@@ -22,14 +26,15 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     }, {
-        classMethods: {
-            associate: function(models) {
-                //associations can be defined here
-                Device.belongsTo(models.ConfigAmbientSound, { foreignKey: 'configAmbientSoundId'});
-                Device.belongsTo(models.ConfigAmbientLight, { foreignKey: 'configAmbientLightId'});
-            }
+      classMethods: {
+        associate: function(models) {
+          //associations can be defined here
+          Device.belongsTo(models.ConfigAmbientSound, { foreignKey: 'configAmbientSoundId'});
+          Device.belongsTo(models.ConfigAmbientLight, { foreignKey: 'configAmbientLightId'});
+          Device.hasOne(models.Ambient, { foreignKey: 'deviceId'})
         }
-    });
+      }
+  });
 
-    return Device;
+  return Device;
 };

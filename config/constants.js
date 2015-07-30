@@ -1,8 +1,8 @@
 var constants = {
-    ambient: {
-        sound: "S",
-        light: "L"
-    }
+  ambient: {
+    sound: "S",
+    light: "L"
+  }
 };
 
 module.exports = constants;
