@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     password: {
       allowNull: false,
-      type: DataTypes.STRING(15)
+      type: DataTypes.STRING(20)
     },
   }, {
     classMethods: {

@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     deviceId: {
       allowNull: false,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(26),
       model: 'Device',
       key: 'id'
     },

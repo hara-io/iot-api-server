@@ -11,7 +11,7 @@ module.exports = {
       },
       deviceId: {
         allowNull: false,
-        type: Sequelize.STRING(36),
+        type: Sequelize.STRING(26),
         model: 'Device',
         key: 'id'
       },
