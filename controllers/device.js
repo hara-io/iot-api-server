@@ -11,6 +11,10 @@ var router = express.Router();
 // invoked for any requested passed to this router
 // Authorization: Basic dGVzc2VsOnRlc3NlbDEyMw==
 router.use(authMiddleware.isAuthenticated, function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 

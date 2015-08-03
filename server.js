@@ -3,6 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var cors = require('cors');
 var ambient = require('./controllers/ambient');
 var device = require('./controllers/device');
 var app = express();
@@ -15,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.json());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // setup morgan for console logger

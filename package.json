@@ -27,6 +27,7 @@
   "homepage": "https://github.com/hara-io/iot-api-server",
   "dependencies": {
     "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
     "express": "^4.13.1",
     "jade": "^1.11.0",
     "morgan": "^1.6.1",
