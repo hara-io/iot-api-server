@@ -7,7 +7,10 @@
     "migrate": "sequelize db:migrate",
     "populate": "node seeds/populate.js",
     "drop": "node seeds/drop.js",
-    "initdb": "npm run drop && npm run migrate && npm run populate"
+    "initdb": "npm run drop && npm run migrate && npm run populate",
+    "preinstall": "npm run initdb",
+    "postinstall": "echo there it goes!",
+    "start": "node server.js",
   },
   "repository": {
     "type": "git",
