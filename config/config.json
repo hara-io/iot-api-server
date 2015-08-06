@@ -1,23 +1,23 @@
 {
-    "development": {
-        "username": "dosmmwruhxtseq",
-        "password": "3lRCK6Z3vgAYSAkOuJVV39u406",
-        "database": "d7e0opl9n5avj3",
-        "host": "ec2-54-247-79-142.eu-west-1.compute.amazonaws.com:5432",
-        "dialect": "postgres"
-    },
-    "test": {
-        "username": "postgres",
-        "password": "postgres",
-        "database": "test-iot-api-server",
-        "host": "127.0.0.1",
-        "dialect": "postgres"
-    },
-    "production": {
-        "username": "postgres",
-        "password": "postgres",
-        "database": "prod-iot-api-server",
-        "host": "127.0.0.1",
-        "dialect": "postgres"
-    }
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "dev-iot-api-server",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "test-iot-api-server",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "dosmmwruhxtseq",
+    "password": "3lRCK6Z3vgAYSAkOuJVV39u406",
+    "database": "d7e0opl9n5avj3",
+    "host": "ec2-54-247-79-142.eu-west-1.compute.amazonaws.com:5432",
+    "dialect": "postgres"
+  }
 }
