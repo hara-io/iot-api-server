@@ -10,7 +10,7 @@
     "initdb": "npm run drop && npm run migrate && npm run populate",
     "preinstall": "npm run initdb",
     "postinstall": "echo there it goes!",
-    "start": "node server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
