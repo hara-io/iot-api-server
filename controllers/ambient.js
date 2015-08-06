@@ -29,7 +29,7 @@ router.route('/save')
     Ambient.create({
       deviceId: ambientDevice,
         type: ambientType.toUpperCase(),
-        value: ambientValue,
+        value: parseFloat(ambientValue),
         createdAt: ambientDate
       })
       .then(function(record) {

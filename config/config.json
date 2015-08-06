@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "postgres",
-        "password": "postgres",
-        "database": "dev-iot-api-server",
-        "host": "127.0.0.1",
+        "username": "dosmmwruhxtseq",
+        "password": "3lRCK6Z3vgAYSAkOuJVV39u406",
+        "database": "d7e0opl9n5avj3",
+        "host": "ec2-54-247-79-142.eu-west-1.compute.amazonaws.com:5432",
         "dialect": "postgres"
     },
     "test": {

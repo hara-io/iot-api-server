@@ -11,7 +11,7 @@ var createUser = function() {
   // create the user model and save it into db
   User.create({
     username: 'tessel',
-    password: 'ee3480ac3ad86791ba'
+    password: 'tessel123'
   })
   .then(function(record) {
     console.log('User inserted with id %s', record.id);
