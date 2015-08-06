@@ -8,8 +8,7 @@
     "populate": "node seeds/populate.js",
     "drop": "node seeds/drop.js",
     "initdb": "npm run drop && npm run migrate && npm run populate",
-    "preinstall": "npm run initdb",
-    "postinstall": "echo there it goes!",
+    "postinstall": "npm run initdb",
     "start": "node server.js"
   },
   "repository": {
