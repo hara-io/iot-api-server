@@ -27,7 +27,7 @@ var createUser = function() {
 var createConfigAmbientSound = function() {
   // create the configAmbientSound model and save it into db
   ConfigAmbientSound.create({
-    threshold: 0.010001
+    threshold: 0.1
   })
   .then(function(record) {
     console.log('ConfigAmbientSound inserted with id %s', record.id);
@@ -45,7 +45,7 @@ var createConfigAmbientSound = function() {
 var createConfigAmbientLight = function(configAmbientSoundId) {
   // create the configAmbientLight model and save it into db
   ConfigAmbientLight.create({
-    threshold: 0.010002
+    threshold: 0.5
   })
   .then(function(record) {
     console.log('ConfigAmbientLight inserted with id %s', record.id);
