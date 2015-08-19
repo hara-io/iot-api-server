@@ -8,7 +8,6 @@
     "populate": "node seeds/populate.js",
     "drop": "node seeds/drop.js",
     "initdb": "npm run drop && npm run migrate && npm run populate",
-    "postinstall": "npm run initdb",
     "start": "node server.js"
   },
   "repository": {
