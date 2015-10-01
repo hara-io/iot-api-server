@@ -1,7 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var inputHelper = require('../helpers/validateInput');
-var checkDeiviceMiddleware = require('../middlewares/checkDeviceRequest');
+var checkDeviceMiddleware = require('../middlewares/checkDeviceRequest');
 var authMiddleware = require('../middlewares/auth');
 var Device = require('../models').Device;
 var ConfigAmbientSound = require('../models').ConfigAmbientSound;
@@ -20,7 +20,7 @@ router.use(authMiddleware.isAuthenticated, function(req, res, next) {
 
 // GET http://localhost:3000/tessel/device/list/:device?
 router.route('/list/:device?')
-  .get(checkDeiviceMiddleware.list, function(req, res, next) {
+  .get(checkDeviceMiddleware.list, function(req, res, next) {
     var filterDevice = req.params.device;
 
     // define where clause
